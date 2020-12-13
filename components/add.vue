@@ -1,17 +1,21 @@
 <template>
   <div>
-    <div class="flex justify-center mt-14">
-      <alert message="Success" :success="true" class="w-full"/>
+
+    <div class="flex justify-center mt-14 " v-if="isSuccess">
+      <alert message="Expense saved to database" :success="true" :disable-alert-box="20000"  class="w-full"/>
     </div>
-  <div class="flex justify-center items-center mb-32 mt-6 ">
+    <div class="flex justify-center mt-14" v-if="isError">
+      <alert message="Error in saving expense" :danger="true" :disable-alert-box="20000"  class="w-full"/>
+    </div>
+  <div class="flex justify-center items-center mb-32 mt-14">
     <div class="bg-white px-8 py-4 rounded-lg w-full md:w-1/2 shadow-lg">
       <div class="py-4 mb-4 tracking-wide flex justify-center flex-wrap">
-        <h4 class="font-bold text-2xl">Add/Update Expense</h4>
+        <h4 class="font-bold text-2xl">{{computeHeaderAndButton}}</h4>
       </div>
       <form @submit.prevent="addUpdateExpense">
         <div class="w-full flex flex-wrap">
           <label  class="block mb-1">Expense Date</label>
-          <datepicker class="w-full" @selectedDate="getSelectedDate"/>
+          <datepicker class="w-full" @selectedDate="getSelectedDate" :set-date="this.expense.date"/>
         </div>
 
         <div class="w-full mt-5 flex flex-wrap ">
@@ -50,7 +54,7 @@
 
         <div class="mt-5">
           <label></label>
-          <input type="submit" value="Add/Update Expense" class="btn btn-indigo">
+          <input type="submit" :value="computeHeaderAndButton" class="btn btn-indigo">
         </div>
 
       </form>
@@ -72,6 +76,12 @@ export default {
   components: { Alert, TwDropdown, TwSelect, Select, Index, Datepicker },
   middleware: 'auth',
   name: "add",
+  props: {
+    expenseToEdit: {
+      type: Object,
+      default: null
+    }
+  },
   data:()=>({
     isOpen: false,
     expense: {
@@ -84,12 +94,23 @@ export default {
       notes: null
     },
     allAccounts: [],
-    allCategories: []
+    allCategories: [],
+    isError: false,
+    isSuccess: false
   }),
   methods: {
     async addUpdateExpense(){
-      let response = await this.$axios.post('/expense',this.expense)
-      console.log(response.data.resp)
+      this.isError = false;
+      this.isSuccess = false;
+      let response = await this.$axios.post('/expense',this.expense).catch(err => this.isError = true)
+      if(response !== undefined){
+        if(response.data.resp === 'success'){
+          this.isSuccess = true;
+        }else{
+          this.isError = true;
+        }
+        this.resetForm();
+      }
     },
     getSelectedDate(e){
       this.expense.date = e;
@@ -106,10 +127,39 @@ export default {
         this.allCategories = resp;
       }
     },
+    resetForm(){
+      this.expense.expenseId = null;
+      this.expense.type = null;
+      this.expense.amount = null;
+      this.expense.categoryId = null;
+      this.expense.accountId = null;
+      this.expense.date = null;
+      this.expense.notes = null;
+    }
   },
   created () {
     this.getAllAccounts();
     this.getAllCategories();
+  },
+  computed: {
+    computeHeaderAndButton(){
+      if(this.expenseToEdit === null){
+        return 'Add Expense';
+      }else{
+        return 'Update Expense';
+      }
+    }
+  },
+  watch: {
+    expenseToEdit: {
+      immediate: true,
+      handler(newVal){
+        if(newVal !== null){
+          this.expense = newVal;
+        }
+
+      }
+    }
   }
 }
 </script>

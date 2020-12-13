@@ -1,75 +1,68 @@
 <template>
-  <div class="my-8">
-    <div class="bg-white w-full rounded shadow px-4">
-      <div class="bg-white pb-4 px-4 rounded-md w-full">
-        <div class="overflow-x-auto mt-6">
+ <div>
+   <!-- This example requires Tailwind CSS v2.0+ -->
+   <div class="fixed z-10 inset-0 overflow-y-auto">
+     <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+       <!--
+         Background overlay, show/hide based on modal state.
 
-          <table class="table-auto border-collapse w-full">
-            <thead>
-            <tr class="rounded-lg text-sm font-medium text-gray-700 text-left" style="font-size: 0.9674rem">
-              <th class="px-4 py-2 bg-gray-200 " style="background-color:#f8f8f8">Title</th>
-              <th class="px-4 py-2 " style="background-color:#f8f8f8">Author</th>
-              <th class="px-4 py-2 " style="background-color:#f8f8f8">Views</th>
-              <th class="px-4 py-2 " style="background-color:#f8f8f8">Views</th>
-              <th class="px-4 py-2 " style="background-color:#f8f8f8">Views</th>
-            </tr>
-            </thead>
-            <tbody class="text-sm font-normal text-gray-700">
-            <tr class="hover:bg-gray-100 border-b border-gray-200 py-10">
-              <td class="px-4 py-4">Intro to CSS</td>
-              <td class="px-4 py-4">Adam</td>
-              <td class="px-4 py-4">858</td>
-            </tr>
-            <tr class="hover:bg-gray-100 border-b border-gray-200 py-4">
-              <td class="px-4 py-4 flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg"   class="fill-current w-5 h-5 mr-5" viewBox="0 -98 512 512">
-                  <path d="M17.453 89.8h54.89c9.626 0 17.454-7.831 17.454-17.456v-54.89C89.797 7.831 81.969 0 72.344 0h-54.89C7.827 0 0 7.828 0 17.453v54.89c0 9.626 7.828 17.458 17.453 17.458zM15 17.454A2.457 2.457 0 0117.453 15h54.89a2.457 2.457 0 012.454 2.453v54.89a2.457 2.457 0 01-2.453 2.454h-54.89A2.457 2.457 0 0115 72.344zm0 0M494.547 0h-47.852c-4.14 0-7.5 3.36-7.5 7.5s3.36 7.5 7.5 7.5h47.852A2.457 2.457 0 01497 17.453v54.89a2.457 2.457 0 01-2.453 2.454H132.012a2.457 2.457 0 01-2.453-2.453v-54.89A2.457 2.457 0 01132.012 15h279.293c4.14 0 7.5-3.36 7.5-7.5s-3.36-7.5-7.5-7.5H132.012c-9.625 0-17.453 7.828-17.453 17.453v54.89c0 9.626 7.828 17.454 17.453 17.454h362.535c9.625 0 17.453-7.828 17.453-17.453v-54.89C512 7.827 504.172 0 494.547 0zm0 0M17.453 203.047h54.89c9.626 0 17.454-7.832 17.454-17.453v-54.89c0-9.626-7.828-17.458-17.453-17.458h-54.89C7.827 113.246 0 121.078 0 130.703v54.89c0 9.622 7.828 17.454 17.453 17.454zM15 130.703a2.458 2.458 0 012.453-2.457h54.89a2.458 2.458 0 012.454 2.457v54.89a2.457 2.457 0 01-2.453 2.454h-54.89A2.457 2.457 0 0115 185.594zm0 0M132.012 203.047h242.535c9.625 0 17.453-7.832 17.453-17.453v-54.89c0-9.626-7.828-17.458-17.453-17.458H184.699a7.5 7.5 0 00-7.5 7.5c0 4.145 3.356 7.5 7.5 7.5h189.848a2.458 2.458 0 012.453 2.457v54.89a2.457 2.457 0 01-2.453 2.454H132.012a2.457 2.457 0 01-2.453-2.453v-54.89a2.458 2.458 0 012.453-2.458h17.293a7.5 7.5 0 100-15h-17.293c-9.625 0-17.453 7.832-17.453 17.457v54.89c0 9.622 7.828 17.454 17.453 17.454zm0 0M72.344 226.496h-54.89C7.827 226.496 0 234.324 0 243.95v54.89c0 9.626 7.828 17.454 17.453 17.454h54.89c9.626 0 17.458-7.828 17.458-17.453v-10.996a7.5 7.5 0 00-7.5-7.5 7.497 7.497 0 00-7.5 7.5v10.996a2.458 2.458 0 01-2.457 2.453h-54.89A2.457 2.457 0 0115 298.84v-54.89a2.457 2.457 0 012.453-2.454h54.89a2.458 2.458 0 012.458 2.453v8.5a7.5 7.5 0 1015 0v-8.5c0-9.625-7.832-17.453-17.457-17.453zm0 0M494.547 226.496H132.012c-9.625 0-17.453 7.828-17.453 17.453v54.89c0 9.626 7.828 17.454 17.453 17.454h362.535c9.625 0 17.453-7.828 17.453-17.453v-54.89c0-9.626-7.828-17.454-17.453-17.454zM497 298.84a2.457 2.457 0 01-2.453 2.453H132.012a2.457 2.457 0 01-2.453-2.453v-54.89a2.457 2.457 0 012.453-2.454h362.535A2.457 2.457 0 01497 243.95zm0 0" data-original="#000000" data-old_color="#000000" />
-                </svg>
+         Entering: "ease-out duration-300"
+           From: "opacity-0"
+           To: "opacity-100"
+         Leaving: "ease-in duration-200"
+           From: "opacity-100"
+           To: "opacity-0"
+       -->
+       <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+         <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+       </div>
 
-                A Long and Winding Tour of the History of UI Frameworks and Tools and the Impact on Design</td>
-              <td class="px-4 py-4">Adam</td>
-              <td class="px-4 py-4">112</td>
-            </tr>
-            <tr class="hover:bg-gray-100  border-gray-200">
-              <td class="px-4 py-4">Intro to JavaScript</td>
-              <td class="px-4 py-4">Chris</td>
-              <td class="px-4 py-4">1,280</td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-        <div id="pagination" class="w-full flex justify-center border-t border-gray-100 pt-4 items-center">
+       <!-- This element is to trick the browser into centering the modal contents. -->
+       <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+       <!--
+         Modal panel, show/hide based on modal state.
 
-          <svg class="h-6 w-6" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g opacity="0.4">
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M9 12C9 12.2652 9.10536 12.5196 9.29289 12.7071L13.2929 16.7072C13.6834 17.0977 14.3166 17.0977 14.7071 16.7072C15.0977 16.3167 15.0977 15.6835 14.7071 15.293L11.4142 12L14.7071 8.70712C15.0977 8.31659 15.0977 7.68343 14.7071 7.29289C14.3166 6.90237 13.6834 6.90237 13.2929 7.29289L9.29289 11.2929C9.10536 11.4804 9 11.7348 9 12Z" fill="#2C2C2C"/>
-            </g>
-          </svg>
+         Entering: "ease-out duration-300"
+           From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+           To: "opacity-100 translate-y-0 sm:scale-100"
+         Leaving: "ease-in duration-200"
+           From: "opacity-100 translate-y-0 sm:scale-100"
+           To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+       -->
+       <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+         <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+           <div class="sm:flex sm:items-start">
+             <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+               <!-- Heroicon name: exclamation -->
+               <svg class="h-6 w-6 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+               </svg>
+             </div>
+             <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+               <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">
+                 Deactivate account
+               </h3>
+               <div class="mt-2">
+                 <p class="text-sm text-gray-500">
+                   Are you sure you want to deactivate your account? All of your data will be permanently removed. This action cannot be undone.
+                 </p>
+               </div>
+             </div>
+           </div>
+         </div>
+         <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+           <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
+             Deactivate
+           </button>
+           <button type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+             Cancel
+           </button>
+         </div>
+       </div>
+     </div>
+   </div>
 
-          <p class="leading-relaxed cursor-pointer mx-2 text-blue-600 hover:text-blue-600 text-sm">1</p>
-          <p class="leading-relaxed cursor-pointer mx-2 text-sm hover:text-blue-600" >2</p>
-          <p class="leading-relaxed cursor-pointer mx-2 text-sm hover:text-blue-600"> 3 </p>
-          <p class="leading-relaxed cursor-pointer mx-2 text-sm hover:text-blue-600"> 4 </p>
-          <svg class="h-6 w-6" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M15 12C15 11.7348 14.8946 11.4804 14.7071 11.2929L10.7071 7.2929C10.3166 6.9024 9.6834 6.9024 9.2929 7.2929C8.9024 7.6834 8.9024 8.3166 9.2929 8.7071L12.5858 12L9.2929 15.2929C8.9024 15.6834 8.9024 16.3166 9.2929 16.7071C9.6834 17.0976 10.3166 17.0976 10.7071 16.7071L14.7071 12.7071C14.8946 12.5196 15 12.2652 15 12Z" fill="#18A0FB"/>
-          </svg>
-
-        </div>
-      </div>
-
-<!--      <style>-->
-
-<!--        thead tr th:first-child { border-top-left-radius: 10px; border-bottom-left-radius: 10px;}-->
-<!--        thead tr th:last-child { border-top-right-radius: 10px; border-bottom-right-radius: 10px;}-->
-
-<!--        tbody tr td:first-child { border-top-left-radius: 5px; border-bottom-left-radius: 0px;}-->
-<!--        tbody tr td:last-child { border-top-right-radius: 5px; border-bottom-right-radius: 0px;}-->
-
-
-<!--      </style>-->
-    </div>
-  </div>
-
+ </div>
 </template>
 
 <script>

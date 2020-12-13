@@ -13,12 +13,17 @@
             </svg>
           </div>
 
-          <transition enter-active-class="transition transition-opacity-50"
-                      leave-active-class="transition transition-opacity-50"
+          <transition enter-active-class="transition ease-in duration-200"
+                      leave-active-class="transition ease-out duration-500"
                       enter-class="opacity-0"
                       leave-to-class="opacity-0"
           >
-          <div class="bg-white mt-1 rounded-lg absolute top-12 shadow p-4 top-0 left-0 w-64 " v-if="showDatepicker" >
+          <div class="bg-white mt-1 rounded-lg absolute top-12 shadow p-4  w-64" v-if="showDatepicker"
+          :class="{
+            'top-0 left-0':datepickerPosition==='left',
+            'top-0 right-0':datepickerPosition==='right',
+          }"
+          >
 
             <div class="flex justify-between items-center mb-2">
               <div>
@@ -53,7 +58,7 @@
               <div v-for="date in no_of_days" >
                 <div class="px-1 mb-1">
                 <div  class="cursor-pointer text-center text-sm leading-none rounded-full leading-loose transition ease-in-out duration-100 transition ease-in duration-500"
-                       :class="{'bg-blue-500 text-white': isToday(date) == true, 'text-gray-700 hover:bg-blue-200': isToday(date) == false }" @click="selectDate(date)">{{date}}</div>
+                       :class="{'bg-blue-500 text-white': showDateSelectedColor(date) == true, 'text-gray-700 hover:bg-blue-200': showDateSelectedColor(date) == false }" @click="selectDate(date)">{{date}}</div>
               </div>
               </div>
             </div>
@@ -72,6 +77,15 @@ export default {
     format: {
       required: false,
       default: 'MMM DD, yyyy'
+    },
+    datepickerPosition:{
+      type:String,
+      default: 'left'
+    },
+    setDate:{
+      type: String | Date,
+      required: false,
+      default: null
     }
   },
   data:()=>({
@@ -113,12 +127,24 @@ export default {
       return today.toDateString() === d.toDateString() ? true : false;
     },
 
-    initDate() {
-      let today = new Date();
-      // let today = new Date(2021,0,1);
-      this.month = today.getMonth();
-      this.year = today.getFullYear();
-      this.datepickerValue = new Date(this.year, this.month, today.getDate()).toDateString();
+    showDateSelectedColor(date){
+      const d = new Date(this.year, this.month, date);
+      const jsDate = this.$moment(d).toDate();
+      const formattedDate = this.$moment(jsDate).format('MMM DD, yyyy')
+      // console.log(formattedDate)
+      // console.log(this.selectedDate)
+      if(this.selectedDate == null && this.isToday(date)){
+        console.log('true')
+        return true;
+      }
+      return formattedDate === this.selectedDate ? true : false;
+    },
+
+    initDate(date) {
+      // // let today = new Date(2021,0,1);
+      this.month = date.getMonth();
+      this.year = date.getFullYear();
+      this.datepickerValue = new Date(this.year, this.month, date.getDate()).toDateString();
     },
 
     goToNextMonth(){
@@ -146,12 +172,31 @@ export default {
       this.$emit('selectedDate', d)
     },
   },
-  created () {
-    this.initDate();
+   mounted () {
+    if(this.setDate == null){
+      this.initDate(new Date());
+    }
     this.buildDates();
   },
   computed: {
 
+  },
+  watch: {
+    setDate: {
+      immediate: true,
+      handler(newVal){
+        if(newVal !== null){
+          this.selectedDate = this.$moment(newVal, 'yyyy-MM-DD').format('MMM DD, yyyy');
+          this.year = this.$moment(this.selectedDate).format('yyyy');
+          this.month = this.$moment(this.selectedDate).format('M') - 1;
+          let date = this.$moment(this.selectedDate).format('D');
+          this.datepickerValue = new Date(parseInt(this.year), parseInt(this.month), parseInt(date)).toDateString();
+          this.buildDates();
+        }else{
+          this.selectedDate = null
+        }
+      }
+    }
   }
 
 }

@@ -50,6 +50,22 @@
 
 /*-----btn danger end---*/
 
+/*//-btn primary start-----\*/
+
+.btn-primary {
+    @apply bg-blue-500 text-white
+}
+
+.btn-primary:hover {
+    @apply bg-blue-400
+}
+
+.btn-primary:active {
+    @apply bg-blue-600
+}
+
+/*-----btn primary end---*/
+
 .form-text {
     @apply focus:ring-1 focus:ring-indigo-400 pl-1 bg-gray-100 text-sm py-1 rounded
 }
