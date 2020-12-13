@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
+@import "./fontawesome/css/all.css";
+
+@tailwind base;
+@tailwind components;
+/*w-full h-10 px-3 text-base border rounded-lg focus:outline-none focus:ring-2 ring-purple-200*/
+
+.form-control {
+    @apply w-full h-10 px-3 text-base border rounded-lg placeholder-gray-600
+}
+
+.form-control:focus {
+    @apply outline-none ring-2 ring-purple-200
+}
+
+
+.btn {
+    @apply inline-block px-5 py-2 cursor-pointer rounded-lg text-sm tracking-wider font-semibold transition ease-in duration-300;
+}
+
+.btn:focus {
+    @apply outline-none;
+}
+
+.btn-indigo {
+    @apply bg-indigo-500 text-white
+}
+
+.btn-indigo:hover {
+    @apply bg-indigo-400
+}
+
+.btn-indigo:active {
+    @apply bg-indigo-600
+}
+
+/*//-btn danger-----\*/
+
+.btn-danger {
+    @apply bg-red-500 text-white
+}
+
+.btn-danger:hover {
+    @apply bg-red-400
+}
+
+.btn-danger:active {
+    @apply bg-red-600
+}
+
+/*-----btn danger end---*/
+
+.form-text {
+    @apply focus:ring-1 focus:ring-indigo-400 pl-1 bg-gray-100 text-sm py-1 rounded
+}
+
+.form-text-login {
+    @apply px-24;
+}
+
+.form-text:focus {
+    @apply outline-none bg-gray-100 border-gray-500
+}
+
+@tailwind utilities;
+
+body {
+    @apply bg-gray-200 text-gray-800 font-body;
+}
+
+.page-enter-active,
+.page-leave-active {
+    transition: opacity 0.5s;
+}
+.page-enter,
+.page-leave-to {
+    opacity: 0;
+}
