@@ -13,56 +13,29 @@
     @apply outline-none ring-2 ring-purple-200
 }
 
-
 .btn {
-    @apply inline-block px-5 py-2 cursor-pointer rounded-lg text-sm tracking-wider font-semibold transition ease-in duration-300;
-}
-
-.btn:focus {
-    @apply outline-none;
+    @apply inline-block px-5 py-2 cursor-pointer rounded-lg text-sm tracking-wider font-semibold transition ease-in duration-300 focus:outline-none transform hover:scale-105
 }
 
 .btn-indigo {
-    @apply bg-indigo-500 text-white
-}
-
-.btn-indigo:hover {
-    @apply bg-indigo-400
-}
-
-.btn-indigo:active {
-    @apply bg-indigo-600
+    @apply bg-indigo-500 text-white hover:bg-indigo-400 active:bg-indigo-600
 }
 
 /*//-btn danger-----\*/
 
 .btn-danger {
-    @apply bg-red-500 text-white
+    @apply bg-red-500 text-white hover:bg-red-400 active:bg-red-600
 }
 
-.btn-danger:hover {
-    @apply bg-red-400
-}
-
-.btn-danger:active {
-    @apply bg-red-600
-}
 
 /*-----btn danger end---*/
 
 /*//-btn primary start-----\*/
 
 .btn-primary {
-    @apply bg-blue-500 text-white
+    @apply bg-blue-500 text-white hover:bg-blue-400 active:bg-blue-600
 }
 
-.btn-primary:hover {
-    @apply bg-blue-400
-}
-
-.btn-primary:active {
-    @apply bg-blue-600
-}
 
 /*-----btn primary end---*/
 
@@ -76,6 +49,14 @@
 
 .form-text:focus {
     @apply outline-none bg-gray-100 border-gray-500
+}
+
+.paginate-nav {
+    @apply  transition ease-in duration-200 transform  text-xs font-semibold flex w-8 h-8 mx-1 p-0 focus:outline-none  items-center justify-center leading-tight relative border border-solid
+}
+
+.paginate-main {
+    @apply  text-xs focus:outline-none transition ease-in duration-200  transform font-semibold flex w-8 h-8 mx-1 p-0  items-center justify-center leading-tight relative border border-solid focus:outline-none   bg-white
 }
 
 @tailwind utilities;

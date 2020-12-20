@@ -17,7 +17,10 @@
     "core-js": "^3.6.5",
     "nuxt": "^2.14.6",
     "nuxt-moment": "^1.0.5",
-    "vue-async-computed": "^3.9.0"
+    "vue-async-computed": "^3.9.0",
+    "vue-currency-input": "^1.22.4",
+    "vue2-filters": "^0.11.0",
+    "vuejs-paginate": "^2.1.0"
   },
   "devDependencies": {
     "@fortawesome/free-brands-svg-icons": "^5.15.1",

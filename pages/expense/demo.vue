@@ -1,79 +1,122 @@
 <template>
- <div>
-   <!-- This example requires Tailwind CSS v2.0+ -->
-   <div class="fixed z-10 inset-0 overflow-y-auto">
-     <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-       <!--
-         Background overlay, show/hide based on modal state.
+  <div>
 
-         Entering: "ease-out duration-300"
-           From: "opacity-0"
-           To: "opacity-100"
-         Leaving: "ease-in duration-200"
-           From: "opacity-100"
-           To: "opacity-0"
-       -->
-       <div class="fixed inset-0 transition-opacity" aria-hidden="true">
-         <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
-       </div>
+    <modal/>
 
-       <!-- This element is to trick the browser into centering the modal contents. -->
-       <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-       <!--
-         Modal panel, show/hide based on modal state.
+<!--    <div id="app" class="h-full w-full flex items-center justify-center">-->
+<!--      <transition name="fade">-->
 
-         Entering: "ease-out duration-300"
-           From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-           To: "opacity-100 translate-y-0 sm:scale-100"
-         Leaving: "ease-in duration-200"
-           From: "opacity-100 translate-y-0 sm:scale-100"
-           To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-       -->
-       <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
-         <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-           <div class="sm:flex sm:items-start">
-             <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-               <!-- Heroicon name: exclamation -->
-               <svg class="h-6 w-6 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-               </svg>
-             </div>
-             <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-               <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">
-                 Deactivate account
-               </h3>
-               <div class="mt-2">
-                 <p class="text-sm text-gray-500">
-                   Are you sure you want to deactivate your account? All of your data will be permanently removed. This action cannot be undone.
-                 </p>
-               </div>
-             </div>
-           </div>
-         </div>
-         <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-           <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
-             Deactivate
-           </button>
-           <button type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
-             Cancel
-           </button>
-         </div>
-       </div>
-     </div>
-   </div>
+<!--        <div v-show="show_modal" class="fixed inset-0 z-30">-->
 
- </div>
+<!--          &lt;!&ndash;       background &ndash;&gt;-->
+<!--          <div v-show="show_modal" @click="showModal()" class="bg-filter bg-white opacity-25 fixed inset-0 w-full h-full z-20">-->
+<!--          </div>-->
+<!--          &lt;!&ndash;          &ndash;&gt;-->
+<!--          <main class="flex flex-col items-center justify-center h-1/2 w-full">-->
+<!--            <transition name="fade-up-down">-->
+<!--              <div v-show="show_modal" class="modal-wrapper inline-block flex items-center z-30">-->
+<!--                <div class="modal max-w-md mx-auto xl:max-w-5xl lg:max-w-5xl md:max-w-2xl bg-white max-h-screen shadow-lg flex-row rounded relative">-->
+
+<!--                  <div class="modal-header p-5 bg-gray-900 text-gray-900 rounded-t">-->
+<!--                    <h5 class="text-white text-2xl uppercase">this is header</h5>-->
+<!--                  </div>-->
+<!--                  <div class="modal-body p-5 w-full h-full overflow-y-auto ">-->
+<!--                    <p class="text-justify">-->
+<!--                      ;lmm lkxnqnxqx qklnxqwnx lkqwnxinqwlx klqwnxqw xlkqwnix qwm nxonqw lkx qkwn xlkqw ipxn qwlk xioqw xlkqw nx ;lmm lkxnqnxqx qklnxqwnx lkqwnxinqwlx klqwnxqw xlkqwnix qwm nxonqw lkx qkwn xlkqw ipxn qwlk xioqw xlkqw nx-->
+<!--                    </p>-->
+<!--                  </div>-->
+<!--                  <div class="modal-footer py-3 px-5 border0-t text-right">-->
+<!--                    <button class="bg-green-500 px-5 py-2 text-white" @click="showModal()">OK</button>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </transition>-->
+
+
+<!--          </main>-->
+<!--        </div>-->
+<!--      </transition>-->
+<!--      <div>-->
+<!--        <span class="text-gray-300 font-bold">lorem text</span><br>-->
+
+<!--      </div>-->
+<!--    </div>-->
+
+  </div>
 </template>
 
 <script>
 import Datepicker from '~/components/datepicker'
 import Alert from '~/components/alert'
+import Modal from '@/components/modal'
 export default {
   name: 'demo',
-  components: { Alert, Datepicker }
+  components: { Modal, Alert, Datepicker },
+  data:()=>({
+    num: 0,
+    show_modal: true,
+  }),
+
+  methods:{
+    showModal(){
+      if(this.show_modal){
+        //stop screen scrolling
+        document.getElementsByTagName("html")[0].classList.remove('overflow-y-hidden');
+        this.show_modal = false;
+      }else{
+        document.getElementsByTagName("html")[0].classList.add('overflow-y-hidden');
+        this.show_modal = true;
+      }
+    }
+  },
+
+  created () {
+
+  }
 }
 </script>
 
 <style scoped>
+.modal-body{
+  max-height: 500px;
+}
+.bg-gray-800-opacity{
+  background-color: #2D374850;
+}
+@media screen and (max-width: 768px){
+  .modal-body {
+    max-height: 400px;
+  }
+}
 
+/* animation for vue transition tag */
+
+.fade-up-down-enter-active {
+  transition: all 0.3s ease;
+}
+.fade-up-down-leave-active {
+  transition: all 0.3s ease;
+}
+.fade-up-down-enter {
+  transform: translateY(10%);
+  opacity: 0;
+}
+.fade-up-down-leave-to {
+  transform: translateY(10%);
+  opacity: 0;
+}
+
+.fade-enter-active{
+  -webkit-transition: opacity 2s;
+  transition: opacity .3s;
+
+}
+.fade-leave-active {
+  transition: opacity .3s;
+}
+
+.fade-enter,
+.fade-leave-to{
+  opacity: 0;
+}
 </style>

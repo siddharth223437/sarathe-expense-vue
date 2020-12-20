@@ -24,7 +24,9 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
-    '~/plugins/axios'
+    '~/plugins/axios',
+    '~/plugins/vue-imports'
+
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -44,6 +46,7 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     '@nuxtjs/moment',
+    'vue-currency-input/nuxt',
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
@@ -59,6 +62,10 @@ export default {
     icons: {
       solid: true
     }
+  },
+  loading: {
+    color: 'red',
+    height: '2px'
   }
 
 

@@ -1,7 +1,7 @@
 import AuthUtil from '~/util/AuthUtil'
 
 export const state = () => ({
-  username: null
+  username: null,
 })
 
 export const getters =  {
@@ -13,5 +13,5 @@ export const getters =  {
 export const mutations = {
   setUsername(state){
     state.username = AuthUtil.getUser();
-  }
+  },
 }

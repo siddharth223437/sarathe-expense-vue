@@ -66,12 +66,12 @@
 </template>
 
 <script>
-import Datepicker from '~/components/datepicker'
-import Index from '~/pages/index'
-import Select from '~/components/tw-dropdown'
-import TwSelect from '~/components/tw-dropdown'
-import TwDropdown from '~/components/tw-dropdown'
-import Alert from '~/components/alert'
+import Datepicker from '@/components/datepicker'
+import Index from '@/pages/index'
+import Select from '@/components/tw-dropdown'
+import TwSelect from '@/components/tw-dropdown'
+import TwDropdown from '@/components/tw-dropdown'
+import Alert from '@/components/alert'
 export default {
   components: { Alert, TwDropdown, TwSelect, Select, Index, Datepicker },
   middleware: 'auth',

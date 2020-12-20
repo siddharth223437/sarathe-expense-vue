@@ -68,6 +68,7 @@ export default {
         sessionStorage.setItem('_token', token);
         sessionStorage.setItem('_user', this.username);
         this.$store.commit('user/setUsername', this.username);
+
         await this.$router.push('/expense')
       }
 
