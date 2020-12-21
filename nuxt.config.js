@@ -1,3 +1,5 @@
+let development = process.env.NODE_ENV !== 'production'
+console.log(development)
 export default {
   // Disable server-side rendering (https://go.nuxtjs.dev/ssr-mode)
   ssr: false,
@@ -51,7 +53,9 @@ export default {
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
-    baseURL: 'http://localhost:5000/expense/api/v1'
+    // baseURL: 'http://localhost:5000/expense/api/v1'
+    baseURL: development ? 'http://localhost:5000/expense/api/v1' : 'http://api.sarathe.com/expense/api/v1'
+    // baseURL: development ? 'http://api.sarathe.com/expense/api/v1' : 'http://api.sarathe.com/expense/api/v1'
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
