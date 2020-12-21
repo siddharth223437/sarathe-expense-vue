@@ -3,9 +3,9 @@ version: 0.2
 phases:
   install:
     commands:
-      - npm i npm@latest -g
-      - pip install --upgrade pip
-      - pip install --upgrade awscli
+#      - npm i npm@latest -g
+#      - pip install --upgrade pip
+#      - pip install --upgrade awscli
   pre_build:
     commands:
       - echo Pre_build Phase
@@ -19,4 +19,4 @@ phases:
     commands:
       - echo PostBuild Phase
       - echo $S3_BUCKET
-      - aws s3 sync ./dist www.sarathe.com
+      - aws s3 sync ./dist S3://GIT $S3_BUCKET
