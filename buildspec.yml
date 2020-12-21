@@ -14,6 +14,7 @@ phases:
     commands:
       - echo Build Phase
       - yarn build
+      - yarn generate
   post_build:
     commands:
       - echo PostBuild Phase
