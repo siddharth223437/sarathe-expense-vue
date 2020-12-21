@@ -54,7 +54,7 @@ export default {
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
     // baseURL: 'http://localhost:5000/expense/api/v1'
-    baseURL: development ? 'http://localhost:5000/expense/api/v1' : 'http://api.sarathe.com/expense/api/v1'
+    baseURL: development ? 'http://localhost:5000/expense/api/v1' : 'https://api.sarathe.com/expense/api/v1'
     // baseURL: development ? 'http://api.sarathe.com/expense/api/v1' : 'http://api.sarathe.com/expense/api/v1'
   },
 
