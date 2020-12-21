@@ -19,4 +19,4 @@ phases:
     commands:
       - echo PostBuild Phase
       - echo $S3_BUCKET
-      - aws s3 sync . $S3_BUCKET
+      - aws s3 sync ./dist www.sarathe.com
