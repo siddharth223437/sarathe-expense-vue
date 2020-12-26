@@ -6,6 +6,7 @@
     'bg-green-100 border-green-700 text-green-900': success,
     'bg-yellow-100 border-yellow-600 text-yellow-900': warning,
     'bg-indigo-200 border-indigo-600 text-indigo-900': info,
+    'md:w-full':widthFull
   }"
   >
     <span class="md:text-lg text-sm font-semibold md:tracking-widest">
@@ -39,6 +40,10 @@ export default {
       required: true,
       type: String
     },
+    widthFull: {
+      type: Boolean,
+      default: false
+    }
   },
   data:()=>({
     showAlertBox: true

@@ -35,6 +35,7 @@
                >
                  <div @mouseleave="expenseMenu = false"  class="absolute z-30 w-56 flex flex-col top-12 right-0  shadow-lg rounded bg-white py-2" v-if="expenseMenu">
                    <nuxt-link v-for="(expense,index) in expenseHeaderArr" :key="index"  :to="expense.link" class="px-3 text-gray-800 py-2 hover:bg-indigo-500 hover:text-white">{{expense.label}}</nuxt-link>
+                   <a @click.prevent="initiatePlaidFlow" class="px-3 text-gray-800 py-2 hover:bg-indigo-500 hover:text-white cursor-pointer">Link Account via Plaid</a>
                  </div>
                </transition>
              </div>
@@ -176,6 +177,75 @@ export default {
       this.openMenu = false
       this.$router.push(obj.link)
     },
+    async getPlaidLinkToken(){
+      const obj = {
+        appName: 'Sarathe-expense',
+        products: ['transactions']
+      }
+      let response = await this.$axios.$post('/plaid/link/token',obj);
+      if(response) {
+        let resp = response['resp'];
+        this.linkToken =  resp.link_token;
+      }
+    },
+
+    async initiatePlaidFlow(){
+      await this.getPlaidLinkToken();
+      let handler = await Plaid.create({
+        token: this.linkToken,
+        env: 'development',
+        onLoad: function() {
+          // Optional, called when Link loads
+        },
+        async onSuccess(public_token, metadata) {
+          const accounts = []
+          metadata.accounts.filter(a => {
+            accounts.push({name:a.name, type:a.type,subtype:a.subtype});
+          })
+
+          const credentials = {
+            publicLinkToken: public_token
+          }
+
+          const institution = {
+            plaidInstitutionId: metadata.institution.institution_id,
+            institutionName: metadata.institution.name
+          }
+          const plaid = {
+            credentials,
+            institution,
+            accounts
+          }
+          console.log(plaid)
+          // Send the public_token to your app server.
+          // The metadata object contains info about the institution the
+          // user selected and the account ID or IDs, if the
+          // Select Account view is enabled.
+
+          $.ajax({
+            url: 'http://localhost:5000/expense/api/v1/plaid/account/add',
+            type: 'post',
+            data: {
+              plaid: JSON.stringify(plaid)
+            },
+            headers: {
+              authorization: 'Basic '+AuthUtil.getAuthToken()
+            },
+            dataType:'json',
+            success: function (data) {
+              console.info(data);
+            }
+          })
+           // $.post('http://localhost:5000/expense/api/v1/plaid/account/add', plaid,{
+           //   headers: {
+           //     Authorization: AuthUtil.getAuthToken()
+           //   }
+           // });
+        },
+      })
+      handler.open();
+    }
+
   },
   asyncComputed: {
     async userInfo(){
@@ -197,6 +267,7 @@ export default {
     this.expenseHeaderArr.push({link:'/expense/add',label:'Add Expense'});
     this.expenseHeaderArr.push({link:'/expense/category',label:'Add Category'});
     this.expenseHeaderArr.push({link:'/expense/account',label:'Add Account'});
+
 
     this.userHeaderArr.push({link:'/expense',label:'Home'});
     this.userHeaderArr.push({link:'/expense',label:'Profile'});

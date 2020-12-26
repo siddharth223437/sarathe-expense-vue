@@ -36,6 +36,18 @@
     @apply bg-blue-500 text-white hover:bg-blue-400 active:bg-blue-600
 }
 
+.btn-secondary {
+    @apply bg-gray-200  hover:bg-gray-300 active:bg-gray-500
+}
+
+.btn-warning {
+    @apply bg-yellow-500 text-black hover:bg-yellow-400 active:bg-yellow-600
+}
+
+.btn-success {
+    @apply bg-green-500 text-white hover:bg-green-400 active:bg-green-600
+}
+
 
 /*-----btn primary end---*/
 
@@ -72,4 +84,29 @@ body {
 .page-enter,
 .page-leave-to {
     opacity: 0;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: .5em;
+    background: #efefef;
+    border: none;
+    border-radius: 3px;
+    padding: 1em 2em 1em 1em;
+    font-size: 1em;
+}
+.select-container {position:relative; display: inline;}
+.select-container:after {content:""; width:0; height:0; position:absolute; pointer-events: none;}
+.select-container:after {
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    top: .3em;
+    right: .75em;
+    border-top: 8px solid black;
+    opacity: 0.5;
+}
+select::-ms-expand {
+    display: none;
 }

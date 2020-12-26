@@ -17,18 +17,26 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    ],
+    script: [
+      {
+        src: 'https://cdn.plaid.com/link/v2/stable/link-initialize.js'
+      },
+      {
+      src: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js'
+      }
+    ],
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
+    '~/node_modules/animate.css/animate'
   ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
     '~/plugins/axios',
-    '~/plugins/vue-imports'
-
+    '~/plugins/vue-imports',
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -40,7 +48,7 @@ export default {
     // '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
-    '@nuxtjs/fontawesome'
+    '@nuxtjs/fontawesome',
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -55,7 +63,7 @@ export default {
   axios: {
     // baseURL: 'http://localhost:5000/expense/api/v1'
     baseURL: development ? 'http://localhost:5000/expense/api/v1' : 'https://api.sarathe.com/expense/api/v1'
-    // baseURL: development ? 'http://api.sarathe.com/expense/api/v1' : 'http://api.sarathe.com/expense/api/v1'
+    // baseURL: development ? 'https://api.sarathe.com/expense/api/v1' : 'http://api.sarathe.com/expense/api/v1'
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)

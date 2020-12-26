@@ -226,7 +226,7 @@ export default {
       handler(){
         this.onPageNumClick(1)
       }
-    }
+    },
   }
 
 }
